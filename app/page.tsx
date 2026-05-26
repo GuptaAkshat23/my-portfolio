@@ -1,65 +1,106 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { heroData } from "../data/portfolio";
+import { MapPin, Mail, FileText } from "lucide-react";
+import Experience from "../components/Experience";
+import Projects from "../components/Projects";
+import EducationSkills from "../components/EducationSkills"; // Added EducationSkills Import
+
+const GithubIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedinIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+    <main className="flex min-h-screen flex-col items-center p-8 md:p-24 bg-neutral-950 text-neutral-50 selection:bg-neutral-800">
+      
+      {/* Background ambient glow (subtle, non-distracting) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* HERO SECTION */}
+      <div className="max-w-3xl w-full z-10 flex flex-col items-start pt-20">
+        
+        {/* Role & Location (The 5-Second Rule) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap items-center gap-4 mb-8 text-sm font-medium text-neutral-400"
+        >
+          <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/50">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            {heroData.role}
+          </span>
+          <span className="flex items-center gap-2">
+            <MapPin size={16} className="text-neutral-500" />
+            {heroData.location}
+          </span>
+        </motion.div>
+
+        {/* Name Reveal */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-400"
+        >
+          {heroData.name}.
+        </motion.h1>
+
+        {/* Clear Value Proposition */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-2xl text-lg md:text-xl text-neutral-400 mb-10 leading-relaxed"
+        >
+          {heroData.description}
+        </motion.p>
+
+        {/* Accessible Contact & Links */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-wrap gap-4"
+        >
+          <a href={heroData.links.resume} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-neutral-200 transition-colors flex items-center gap-2">
+             <FileText size={18} /> View Resume
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href={heroData.links.github} target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+            <GithubIcon size={20} />
           </a>
-        </div>
-      </main>
-    </div>
+          <a href={heroData.links.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+            <LinkedinIcon size={20} />
+          </a>
+          <a href={heroData.links.email} className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+            <Mail size={20} />
+          </a>
+        </motion.div>
+
+      </div>
+      
+      {/* PROFESSIONAL EXPERIENCE SECTION */}
+      <Experience />
+
+      {/* PROOF OF WORK SECTION */}
+      <Projects />
+
+      {/* EDUCATION & SKILLS SECTION */}
+      <EducationSkills />
+
+    </main>
   );
 }
