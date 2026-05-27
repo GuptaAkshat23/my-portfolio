@@ -22,6 +22,18 @@ const LinkedinIcon = ({ size = 20 }) => (
   </svg>
 );
 
+const LeetCodeIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.543l3.995 3.739 6.22 5.705c.473.477 1.164.723 1.846.737.763-.031 1.485-.278 2.083-.718l-.001-.004c.145-.106.281-.225.405-.353l.004-.002c.328-.351.583-.75.753-1.182.164-.407.253-.842.261-1.282.008-.439-.063-.873-.21-1.282a3.652 3.652 0 0 0-.583-1.077l-1.05-1.026-.002-.001-4.718-4.636c-.452-.444-1.121-.692-1.782-.692-.66 0-1.33.248-1.782.692l-2.02 1.968-.004.004c-.394.396-.948.583-1.492.545-.536-.046-1.037-.308-1.375-.724a2.002 2.002 0 0 1-.161-2.12c.231-.416.591-.749 1.023-.951l.004-.002 2.015-1.961c.907-.887 1.355-2.043 1.355-3.232 0-1.188-.448-2.344-1.355-3.232l-2.015-1.962a1.996 1.996 0 0 1-.363-2.399 2.008 2.008 0 0 1 1.638-.971c.545-.038 1.098.15 1.492.546l2.02 1.967c.452.445 1.121.692 1.782.692.66 0 1.33-.247 1.782-.692l4.718-4.636c.452-.444.693-1.042.693-1.677 0-.635-.241-1.233-.693-1.677l-6.22-5.705A1.374 1.374 0 0 0 13.483 0zm-2.866 12.815a1.18 1.18 0 0 0-.831.352l-2.066 2.044a1.2 1.2 0 0 0-.27 1.35 1.168 1.168 0 0 0 .96.65c.307.014.606-.09.83-.292l2.067-2.045a1.183 1.183 0 0 0 .346-.84 1.196 1.196 0 0 0-1.036-1.219z" />
+  </svg>
+);
+
+const CodeforcesIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-15c0-.828.672-1.5 1.5-1.5h3zm9 7.5c.828 0 1.5.672 1.5 1.5v7.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V12c0-.828.672-1.5 1.5-1.5h3z" />
+  </svg>
+);
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-8 md:p-24 bg-neutral-950 text-neutral-50 selection:bg-neutral-800">
@@ -79,13 +91,19 @@ export default function Home() {
           <a href={heroData.links.resume} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-neutral-200 transition-colors flex items-center gap-2">
              <FileText size={18} /> View Resume
           </a>
-          <a href={heroData.links.github} target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+          <a href={heroData.links.github} title="GitHub" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
             <GithubIcon size={20} />
           </a>
-          <a href={heroData.links.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+          <a href={heroData.links.linkedin} title="LinkedIn" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
             <LinkedinIcon size={20} />
           </a>
-          <a href={heroData.links.email} className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+          <a href={heroData.links.leetcode} title="LeetCode" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+            <LeetCodeIcon size={20} />
+          </a>
+          <a href={heroData.links.codeforces} title="Codeforces" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
+            <CodeforcesIcon size={20} />
+          </a>
+          <a href={heroData.links.email} title="Email" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
             <Mail size={20} />
           </a>
         </motion.div>

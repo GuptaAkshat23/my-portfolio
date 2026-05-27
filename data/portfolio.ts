@@ -1,14 +1,15 @@
 export const heroData = {
   name: "Akshat Gupta",
-  role: "Software Development Engineer (SDE)",
-  location: "Ghaziabad, India",
+  role: "Aspiring Software Development Engineer (SDE)",
+  location: "Delhi, India",
   description: "I build robust backend systems, scalable full-stack applications, and data-driven ML pipelines. Currently pursuing a B.Tech at IIT Mandi, focused on translating complex algorithms into production-ready software.",
   links: {
+    resume: "/resume_Akshat.pdf",
     github: "https://github.com/GuptaAkshat23",
-    linkedin: "https://linkedin.com/in/your-linkedin-id",
+    linkedin: "https://www.linkedin.com/in/akshat-gupta-823516285/",
     email: "mailto:guptaakshat2309@gmail.com",
-    leetcode: "https://leetcode.com/your-id", // Add your link here
-    resume: "/resume_Akshat.pdf" // Make sure to place your PDF in the public folder
+    leetcode: "https://leetcode.com/u/AkshatGupta2309/",
+    codeforces: "https://codeforces.com/profile/guptaakshat2309" 
   }
 };
 
@@ -27,6 +28,7 @@ export const experience = [
   }
 ];
 
+
 export const projects = [
   {
     title: "ChronoCapsule",
@@ -37,6 +39,12 @@ export const projects = [
     github: "https://github.com/GuptaAkshat23/ChronoCapsule",
   },
   {
+    title: "Pilot Hand Glove Add-on",
+    description: "Engineered a cost-effective, tear-resistant add-on utilizing conductive ink, enabling defense pilots to interact with touchscreens without removing protective gear.",
+    date: "Aug 2024 - Dec 2024",
+    tech: ["Material Science", "Conductive Ink", "Hardware Innovation"],
+  },
+  {
     title: "Movie Recommender System",
     description: "Engineered a content-based recommendation engine leveraging vectorization and cosine similarity on TMDB API datasets.",
     date: "July 2024",
@@ -45,12 +53,19 @@ export const projects = [
   }
 ];
 
+export const achievements = [
+  "Secured 1st Runner Up in the open house project demonstration of Design Practicum (IC202P).",
+  "Awarded a ₹2.5L grant for an innovative project proposal in Design Practicum.",
+  "Invited to BRD Chandigarh to explore and contribute to technical hardware projects for the Indian Air Force."
+];
+
+
 export const education = {
   school: "Indian Institute of Technology, Mandi",
   degree: "Bachelor of Technology in Civil Engineering",
   date: "Aug 2023 - Present",
   description: "Bridging rigorous engineering with high-impact software development.",
-  coursework: ["Data Structures & Algorithms", "Machine Learning", "Probability & Statistics", "Python for Data Science", "Calculus", "Linear Algebra"]
+  coursework: ["Data Structures & Algorithms", "Machine Learning", "Probability & Statistics","Introduction to Statistical Learning", "Python for Data Science", "Calculus", "Linear Algebra"]
 };
 
 export const skills = {
