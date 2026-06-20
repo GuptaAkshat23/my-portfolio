@@ -5,58 +5,55 @@ import { experience } from "../data/portfolio";
 
 export default function Experience() {
   return (
-    <section id="experience" className="w-full max-w-3xl mx-auto py-24 px-8 md:px-0">
-      <motion.h2 
+    <section id="experience" className="mx-auto w-full max-w-3xl px-1 py-24 sm:px-2 md:px-0">
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        className="text-3xl font-bold mb-12 text-neutral-100"
+        className="mb-12"
       >
-        Experience
-      </motion.h2>
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-violet-cursed"></p>
+        <h2 className="text-3xl font-bold text-neutral-100">Where I&apos;ve worked</h2>
+      </motion.div>
 
       <div className="space-y-16">
         {experience.map((exp, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5 }}
-            className="relative pl-6 border-l border-neutral-800"
+            className="relative border-l border-line pl-6"
           >
-            {/* Timeline Dot */}
-            <div className="absolute w-3 h-3 bg-neutral-700 rounded-full -left-[6.5px] top-2 border-2 border-neutral-950" />
-            
-            {/* Header: Role & Date */}
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2 gap-2">
+            {/* Timeline node */}
+            <div className="absolute -left-[6.5px] top-2 h-3 w-3 rounded-full border-2 border-background bg-violet-cursed" />
+
+            <div className="mb-2 flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
               <h3 className="text-xl font-semibold text-neutral-200">{exp.role}</h3>
-              <span className="text-sm font-mono text-neutral-500 whitespace-nowrap">{exp.date}</span>
+              <span className="whitespace-nowrap font-mono text-sm text-neutral-500">{exp.date}</span>
             </div>
 
-            {/* Subheader: Company & Location */}
-            <div className="flex flex-wrap items-center gap-2 mb-6 text-sm">
-              <span className="font-medium text-emerald-400">{exp.company}</span>
-              <span className="text-neutral-600 hidden sm:inline">•</span>
+            <div className="mb-6 flex flex-wrap items-center gap-2 text-sm">
+              <span className="font-medium text-cyan-cursed">{exp.company}</span>
+              <span className="hidden text-neutral-600 sm:inline">•</span>
               <span className="text-neutral-400">{exp.location}</span>
             </div>
 
-            {/* Bullet Points */}
-            <ul className="space-y-3 mb-6">
+            <ul className="mb-6 space-y-3">
               {exp.points.map((point, i) => (
-                <li key={i} className="text-neutral-400 leading-relaxed flex gap-3 text-[15px]">
-                  <span className="text-neutral-600 mt-1">▹</span>
+                <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-neutral-400">
+                  <span className="mt-1 text-violet-cursed">▹</span>
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
 
-            {/* Tech Stack Chips */}
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="mt-4 flex flex-wrap gap-2">
               {exp.tech.map((tech, i) => (
-                <span 
-                  key={i} 
-                  className="px-3 py-1 text-xs font-medium rounded-md bg-neutral-900 border border-neutral-800 text-neutral-300"
+                <span
+                  key={i}
+                  className="rounded-md border border-line bg-surface px-3 py-1 text-xs font-medium text-neutral-300"
                 >
                   {tech}
                 </span>

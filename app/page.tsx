@@ -5,7 +5,10 @@ import { heroData } from "../data/portfolio";
 import { MapPin, Mail, FileText } from "lucide-react";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
-import EducationSkills from "../components/EducationSkills"; // Added EducationSkills Import
+import EducationSkills from "../components/EducationSkills";
+import CursedField from "../components/CursedField";
+import GlitchText from "../components/GlitchText";
+import Magnetic from "../components/Magnetic";
 
 const GithubIcon = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -34,91 +37,98 @@ const CodeforcesIcon = ({ size = 20 }) => (
   </svg>
 );
 
+const iconLink =
+  "flex p-3 border border-line rounded-lg text-neutral-300 transition-colors hover:border-violet-cursed/60 hover:text-white hover:bg-violet-cursed/10";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-8 md:p-24 bg-neutral-950 text-neutral-50 selection:bg-neutral-800">
-      
-      {/* Background ambient glow (subtle, non-distracting) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none" />
+    <main className="relative flex min-h-screen flex-col items-center overflow-x-hidden bg-background px-5 py-8 text-foreground selection:bg-violet-cursed/30 sm:px-8 md:px-12 md:py-16">
 
-      {/* HERO SECTION */}
-      <div className="max-w-3xl w-full z-10 flex flex-col items-start pt-20">
-        
-        {/* Role & Location (The 5-Second Rule) */}
-        <motion.div 
+      {/* Cursed-energy hero layer: grid + particle field + ambient glow */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[700px]">
+        <div className="cursed-grid absolute inset-0" aria-hidden />
+        <CursedField />
+        <div className="cursed-glow absolute left-1/2 top-[-120px] h-[460px] w-[min(820px,90vw)] -translate-x-1/2 rounded-full blur-[40px]" aria-hidden />
+      </div>
+
+      {/* HERO */}
+      <div className="z-10 flex w-full max-w-3xl flex-col items-start pt-16 md:pt-24">
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-center gap-4 mb-8 text-sm font-medium text-neutral-400"
+          className="mb-8 flex flex-wrap items-center gap-3 text-sm font-medium text-muted"
         >
-          <span className="flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/50">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1 font-mono">
+            <span className="pulse-cursed h-2 w-2 rounded-full bg-cyan-cursed" />
             {heroData.role}
           </span>
           <span className="flex items-center gap-2">
-            <MapPin size={16} className="text-neutral-500" />
+            <MapPin size={16} className="text-violet-cursed" />
             {heroData.location}
           </span>
         </motion.div>
 
-        {/* Name Reveal */}
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-400"
+          className="mb-6 bg-gradient-to-br from-white via-violet-200 to-violet-cursed bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl"
         >
-          {heroData.name}.
+          <GlitchText text={`${heroData.name}.`} />
         </motion.h1>
 
-        {/* Clear Value Proposition */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-2xl text-lg md:text-xl text-neutral-400 mb-10 leading-relaxed"
+          className="mb-10 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-xl"
         >
           {heroData.description}
         </motion.p>
 
-        {/* Accessible Contact & Links */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-3"
         >
-          <a href={heroData.links.resume} target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-neutral-200 transition-colors flex items-center gap-2">
-             <FileText size={18} /> View Resume
-          </a>
-          <a href={heroData.links.github} title="GitHub" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
-            <GithubIcon size={20} />
-          </a>
-          <a href={heroData.links.linkedin} title="LinkedIn" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
-            <LinkedinIcon size={20} />
-          </a>
-          <a href={heroData.links.leetcode} title="LeetCode" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
-            <LeetCodeIcon size={20} />
-          </a>
-          <a href={heroData.links.codeforces} title="Codeforces" target="_blank" rel="noopener noreferrer" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
-            <CodeforcesIcon size={20} />
-          </a>
-          <a href={heroData.links.email} title="Email" className="p-3 border border-neutral-800 rounded-lg hover:bg-neutral-900 text-neutral-300 transition-colors">
-            <Mail size={20} />
-          </a>
+          <Magnetic>
+            <a href={heroData.links.resume} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-black transition-colors hover:bg-neutral-200">
+              <FileText size={18} /> View Resume
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href={heroData.links.github} title="GitHub" target="_blank" rel="noopener noreferrer" className={iconLink}>
+              <GithubIcon size={20} />
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href={heroData.links.linkedin} title="LinkedIn" target="_blank" rel="noopener noreferrer" className={iconLink}>
+              <LinkedinIcon size={20} />
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href={heroData.links.leetcode} title="LeetCode" target="_blank" rel="noopener noreferrer" className={iconLink}>
+              <LeetCodeIcon size={20} />
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href={heroData.links.codeforces} title="Codeforces" target="_blank" rel="noopener noreferrer" className={iconLink}>
+              <CodeforcesIcon size={20} />
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href={heroData.links.email} title="Email" className={iconLink}>
+              <Mail size={20} />
+            </a>
+          </Magnetic>
         </motion.div>
-
       </div>
-      
-      {/* PROFESSIONAL EXPERIENCE SECTION */}
+
       <Experience />
-
-      {/* PROOF OF WORK SECTION */}
       <Projects />
-
-      {/* EDUCATION & SKILLS SECTION */}
       <EducationSkills />
-
     </main>
   );
 }
